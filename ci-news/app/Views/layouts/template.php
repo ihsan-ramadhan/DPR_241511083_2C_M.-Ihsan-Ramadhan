@@ -5,18 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $this->renderSection('title') ?> - Aplikasi Gaji DPR</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800">
 
     <?= $this->renderSection('content') ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="logout-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm text-center">
+            <h3 class="text-lg font-semibold text-slate-800 mb-4">Konfirmasi Logout</h3>
+            <p class="text-slate-600 mb-6">Apakah Anda yakin ingin keluar dari sesi ini?</p>
+            <div class="flex justify-center space-x-4">
+                <button id="cancel-logout" class="px-6 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-md hover:bg-slate-200">
+                    Batal
+                </button>
+                <a id="confirm-logout" href="#" class="px-6 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600">
+                    Ya, Keluar
+                </a>
+            </div>
+        </div>
+    </div>
+<?= $this->renderSection('scripts') ?>
 </body>
 </html>
