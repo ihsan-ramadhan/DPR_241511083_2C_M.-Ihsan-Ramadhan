@@ -12,7 +12,12 @@ $routes->post('auth/login', 'AuthController::login');
 $routes->get('/logout', 'AuthController::logout');
 
 $routes->group('', ['filter' => 'auth'], function ($routes) {
-    $routes->get('/public/dashboard', 'PublicController::index');
+    $routes->get('/public/dashboard', 'DashboardController::public');
+    $routes->get('/admin/dashboard', 'DashboardController::admin');
 
-    $routes->get('/admin/dashboard', 'AdminController::index');
+    $routes->get('/public/anggota', 'AnggotaController::public');
+    $routes->get('/admin/anggota', 'AnggotaController::admin');
+
+    $routes->get('/public/penggajian', 'PenggajianController::public');
+    $routes->get('/admin/penggajian', 'PenggajianController::admin');
 });

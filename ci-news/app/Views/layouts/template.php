@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $this->renderSection('title') ?> - Aplikasi Gaji DPR</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
     <?= $this->renderSection('content') ?>
+
     <div id="logout-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm text-center">
             <h3 class="text-lg font-semibold text-slate-800 mb-4">Konfirmasi Logout</h3>
@@ -24,6 +24,36 @@
             </div>
         </div>
     </div>
-<?= $this->renderSection('scripts') ?>
+
+    <script>
+        const logoutModal = document.getElementById('logout-modal');
+        const cancelLogoutButton = document.getElementById('cancel-logout');
+        const confirmLogoutButton = document.getElementById('confirm-logout');
+        const logoutLinks = document.querySelectorAll('.logout-link');
+
+        logoutLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const logoutUrl = this.href;
+                confirmLogoutButton.href = logoutUrl;
+                logoutModal.classList.remove('hidden');
+            });
+        });
+
+        function hideLogoutModal() {
+            logoutModal.classList.add('hidden');
+        }
+
+        cancelLogoutButton.addEventListener('click', hideLogoutModal);
+
+        logoutModal.addEventListener('click', function(event) {
+            if (event.target === this) {
+                hideLogoutModal();
+            }
+        });
+    </script>
+
+    <?= $this->renderSection('scripts') ?>
+
 </body>
 </html>
