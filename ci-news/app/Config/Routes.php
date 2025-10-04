@@ -29,6 +29,11 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('/public/penggajian', 'PenggajianController::public');
     $routes->get('/admin/penggajian', 'PenggajianController::admin');
 
+    $routes->get('/admin/penggajian/create', 'PenggajianController::create');
+    $routes->post('/admin/penggajian/store', 'PenggajianController::store');
+
+    $routes->get('/admin/penggajian/get-komponen/(:num)', 'PenggajianController::getKomponenByAnggota/$1');
+
     $routes->get('/admin/komponen-gaji', 'KomponenGajiController::index');
 
     $routes->get('/admin/komponen-gaji/create', 'KomponenGajiController::create');

@@ -8,10 +8,17 @@
 <?= $this->include('layouts/navbar_admin') ?>
 
 <div class="container mx-auto px-6 py-6">
+    <?php if (session()->getFlashdata('success')) : ?>
+        <div id="global-notification" class="fixed top-5 right-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg flex items-center z-50" role="alert">
+        <span class="block sm:inline mr-4"><?= session()->getFlashdata('success') ?></span>
+        <button id="close-notification" class="text-green-700 hover:text-green-900"><span class="text-2xl">&times;</span></button>
+        </div>
+    <?php endif; ?>
+
     <div class="bg-white rounded-xl shadow-lg overflow-hidden">
         <div class="p-6 sm:px-8 flex justify-between items-center border-b border-slate-200">
             <h3 class="text-xl font-semibold text-slate-700">Data Penggajian Anggota DPR</h3>
-            <a href="#" class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Tambah Data</a>
+            <a href="<?= base_url('/admin/penggajian/create') ?>" class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Tambah Data</a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-left text-slate-500">

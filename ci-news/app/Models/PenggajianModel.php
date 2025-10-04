@@ -7,6 +7,12 @@ use CodeIgniter\Model;
 class PenggajianModel extends Model
 {
     protected $table = 'penggajian';
+
+    protected $allowedFields = [
+        'id_anggota',
+        'id_komponen_gaji'
+    ];
+
     public function getPenggajianWithTakeHomePay()
     {
         return $this->db->table('anggota a')
