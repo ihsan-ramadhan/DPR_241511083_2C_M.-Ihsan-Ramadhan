@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'AuthController::index');
 $routes->get('/login', 'AuthController::index');
 
-$routes->post('auth/login', 'AuthController::login');
+$routes->post('/auth/login', 'AuthController::login');
 $routes->get('/logout', 'AuthController::logout');
 
 $routes->group('', ['filter' => 'auth'], function ($routes) {
@@ -21,5 +21,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('/public/penggajian', 'PenggajianController::public');
     $routes->get('/admin/penggajian', 'PenggajianController::admin');
 
-    $routes->get('admin/penggajian/(:num)', 'PenggajianController::detailAdmin/$1');
+    $routes->get('/admin/komponen-gaji', 'KomponenGajiController::index');
+
+    $routes->get('/admin/penggajian/(:num)', 'PenggajianController::detailAdmin/$1');
 });

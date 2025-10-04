@@ -13,6 +13,10 @@
                    class="px-3 py-2 rounded-md text-sm font-medium <?= ($uri->getSegment(2) == 'anggota') ? 'bg-blue-600 text-white' : 'text-white' ?> hover:bg-blue-600 hover:text-white">
                    Data Anggota
                 </a>
+                <a href="<?= base_url('/admin/komponen-gaji') ?>" 
+                   class="px-3 py-2 rounded-md text-sm font-medium <?= ($uri->getSegment(2) == 'komponen-gaji') ? 'bg-blue-600 text-white' : 'text-white' ?> hover:bg-blue-600 hover:text-white">
+                   Komponen Gaji
+                </a>
                 <a href="<?= base_url('/admin/penggajian') ?>" 
                    class="px-3 py-2 rounded-md text-sm font-medium <?= ($uri->getSegment(2) == 'penggajian') ? 'bg-blue-600 text-white' : 'text-white' ?> hover:bg-blue-600 hover:text-white">
                    Data Penggajian
