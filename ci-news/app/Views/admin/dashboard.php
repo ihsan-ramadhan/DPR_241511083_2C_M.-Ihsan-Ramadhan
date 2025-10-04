@@ -87,8 +87,8 @@
                     <tbody class="text-slate-600">
                         <?php foreach($komponen_gaji as $item): ?>
                         <tr class="border-t">
-                            <td class="px-6 py-4 font-mono"><?= esc($item['id_komponen_gaji']) ?></td>
-                            <td class="px-6 py-4 font-medium"><?= esc($item['nama_komponen']) ?></td>
+                            <td class="px-6 py-4 font-medium"><?= esc($item['id_komponen_gaji']) ?></td>
+                            <td class="px-6 py-4"><?= esc($item['nama_komponen']) ?></td>
                             <td class="px-6 py-4"><?= esc($item['kategori']) ?></td>
                             <td class="px-6 py-4"><?= esc($item['jabatan']) ?></td>
                             <td class="px-6 py-4">Rp. <?= number_format($item['nominal'], 0, ',', '.') ?></td>

@@ -46,25 +46,33 @@ class PenggajianController extends BaseController
         $penggajianModel = new PenggajianModel();
         
         $id_anggota = $this->request->getPost('id_anggota');
-        $id_komponen_gaji = $this->request->getPost('id_komponen_gaji');
 
-        $penggajianModel->where('id_anggota', $id_anggota)->delete();
+        $newKomponenIds = $this->request->getPost('id_komponen_gaji') ?? [];
 
-        $dataToInsert = [];
-        if (!empty($id_komponen_gaji)) {
-            foreach ($id_komponen_gaji as $id_komponen) {
-                $dataToInsert[] = [
-                    'id_anggota' => $id_anggota,
-                    'id_komponen_gaji' => $id_komponen
-                ];
+        $originalKomponen = $penggajianModel->where('id_anggota', $id_anggota)->findAll();
+        $originalKomponenIds = array_column($originalKomponen, 'id_komponen_gaji');
+
+        sort($newKomponenIds);
+        sort($originalKomponenIds);
+
+        if ($newKomponenIds === $originalKomponenIds) {
+            session()->setFlashdata('info', 'Tidak ada perubahan data yang dilakukan.');
+        } else {
+            $penggajianModel->where('id_anggota', $id_anggota)->delete();
+
+            $dataToInsert = [];
+            if (!empty($newKomponenIds)) {
+                foreach ($newKomponenIds as $id_komponen) {
+                    $dataToInsert[] = [
+                        'id_anggota' => $id_anggota,
+                        'id_komponen_gaji' => $id_komponen
+                    ];
+                }
+                $penggajianModel->insertBatch($dataToInsert);
             }
+            
+            session()->setFlashdata('success', 'Data penggajian untuk anggota berhasil diatur.');
         }
-
-        if (!empty($dataToInsert)) {
-            $penggajianModel->insertBatch($dataToInsert);
-        }
-
-        session()->setFlashdata('success', 'Data penggajian untuk anggota berhasil diatur.');
 
         return redirect()->to('/admin/penggajian');
     }
@@ -116,5 +124,16 @@ class PenggajianController extends BaseController
         $data['existing_ids'] = array_column($existingKomponen, 'id_komponen_gaji');
 
         return view('admin/penggajian/edit', $data);
+    }
+
+    public function delete($id_anggota)
+    {
+        $penggajianModel = new PenggajianModel();
+
+        $penggajianModel->where('id_anggota', $id_anggota)->delete();
+
+        session()->setFlashdata('success', 'Data penggajian untuk anggota berhasil dihapus.');
+
+        return redirect()->to('/admin/penggajian');
     }
 }

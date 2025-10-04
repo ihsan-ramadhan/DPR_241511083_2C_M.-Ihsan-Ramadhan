@@ -36,6 +36,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
     $routes->get('/admin/penggajian/edit/(:num)', 'PenggajianController::edit/$1');
 
+    $routes->get('/admin/penggajian/delete/(:num)', 'PenggajianController::delete/$1');
+
     $routes->get('/admin/komponen-gaji', 'KomponenGajiController::index');
 
     $routes->get('/admin/komponen-gaji/create', 'KomponenGajiController::create');

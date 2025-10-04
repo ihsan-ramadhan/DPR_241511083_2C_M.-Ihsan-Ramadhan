@@ -10,8 +10,18 @@
 <div class="container mx-auto px-6 py-6">
     <?php if (session()->getFlashdata('success')) : ?>
         <div id="global-notification" class="fixed top-5 right-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg flex items-center z-50" role="alert">
-        <span class="block sm:inline mr-4"><?= session()->getFlashdata('success') ?></span>
-        <button id="close-notification" class="text-green-700 hover:text-green-900"><span class="text-2xl">&times;</span></button>
+            <span class="block sm:inline mr-4"><?= session()->getFlashdata('success') ?></span>
+            <button id="close-notification" class="text-green-700 hover:text-green-900">
+                <span class="text-2xl">&times;</span>
+            </button>
+        </div>
+
+    <?php elseif (session()->getFlashdata('info')) : ?>
+        <div id="global-notification" class="fixed top-5 right-5 bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded-lg shadow-lg flex items-center z-50" role="alert">
+            <span class="block sm:inline mr-4"><?= session()->getFlashdata('info') ?></span>
+            <button id="close-notification" class="text-blue-700 hover:text-blue-900">
+                <span class="text-2xl">&times;</span>
+            </button>
         </div>
     <?php endif; ?>
 
@@ -41,6 +51,12 @@
                         <td class="px-6 py-4 space-x-2">
                             <a href="<?= base_url('/admin/penggajian/' . $item['id_anggota']) ?>" class="font-medium text-blue-500 hover:underline">Detail</a>
                             <a href="<?= base_url('/admin/penggajian/edit/' . $item['id_anggota']) ?>" class="font-medium text-yellow-500 hover:underline">Edit</a>
+                            <a href="<?= base_url('/admin/penggajian/delete/' . $item['id_anggota']) ?>" 
+                                class="font-medium text-red-500 hover:underline delete-link"
+                                data-type="data penggajian"
+                                data-name="<?= esc(trim($item['gelar_depan'] . ' ' . $item['nama_depan'] . ' ' . $item['nama_belakang'] . ', ' . $item['gelar_belakang'], ' ,')) ?>">
+                                Hapus
+                            </a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
