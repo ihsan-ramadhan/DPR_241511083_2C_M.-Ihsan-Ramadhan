@@ -19,7 +19,7 @@
                         <th scope="col" class="px-6 py-4">ID</th>
                         <th scope="col" class="px-6 py-4">Nama Lengkap</th>
                         <th scope="col" class="px-6 py-4">Jabatan</th>
-                        <th scope="col" class="px-6 py-4">Take Home Pay (Per Bulan)</th>
+                        <th scope="col" class="px-6 py-4">Take Home Pay</th>
                     </tr>
                 </thead>
                 <tbody>

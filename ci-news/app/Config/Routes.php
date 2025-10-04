@@ -34,5 +34,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('/admin/komponen-gaji/create', 'KomponenGajiController::create');
     $routes->post('/admin/komponen-gaji/store', 'KomponenGajiController::store');
 
+    $routes->get('/admin/komponen-gaji/edit/(:num)', 'KomponenGajiController::edit/$1');
+    $routes->post('/admin/komponen-gaji/update/(:num)', 'KomponenGajiController::update/$1');
+
     $routes->get('/admin/penggajian/(:num)', 'PenggajianController::detailAdmin/$1');
 });

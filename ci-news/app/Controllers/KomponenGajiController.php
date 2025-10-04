@@ -39,4 +39,52 @@ class KomponenGajiController extends BaseController
 
         return redirect()->to('/admin/komponen-gaji');
     }
+
+    public function edit($id)
+    {
+        $komponenGajiModel = new KomponenGajiModel();
+        $data['komponen'] = $komponenGajiModel->find($id);
+
+        if (empty($data['komponen'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Komponen gaji tidak ditemukan.');
+        }
+        
+        return view('admin/komponen_gaji/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $komponenGajiModel = new KomponenGajiModel();
+        $originalData = $komponenGajiModel->find($id);
+
+        $data = [
+            'nama_komponen'     => $this->request->getPost('nama_komponen'),
+            'kategori'          => $this->request->getPost('kategori'),
+            'jabatan'           => $this->request->getPost('jabatan'),
+            'nominal'           => $this->request->getPost('nominal'),
+            'satuan'            => $this->request->getPost('satuan'),
+        ];
+
+        $isChanged = false;
+        foreach ($data as $key => $value) {
+            if ($key == 'nominal') {
+                if ((float)$originalData[$key] != (float)$value) {
+                    $isChanged = true;
+                    break;
+                }
+            } elseif ($originalData[$key] != $value) {
+                $isChanged = true;
+                break;
+            }
+        }
+
+        if ($isChanged) {
+            $komponenGajiModel->update($id, $data);
+            session()->setFlashdata('success', 'Komponen gaji berhasil diubah.');
+        } else {
+            session()->setFlashdata('info', 'Tidak ada perubahan data yang dilakukan.');
+        }
+
+        return redirect()->to('/admin/komponen-gaji');
+    }
 }

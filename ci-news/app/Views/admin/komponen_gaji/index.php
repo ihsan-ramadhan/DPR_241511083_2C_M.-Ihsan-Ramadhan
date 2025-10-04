@@ -12,6 +12,14 @@
                 <span class="text-2xl">&times;</span>
             </button>
         </div>
+
+        <?php elseif (session()->getFlashdata('info')) : ?>
+        <div id="global-notification" class="fixed top-5 right-5 bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded-lg shadow-lg flex items-center z-50" role="alert">
+            <span class="block sm:inline mr-4"><?= session()->getFlashdata('info') ?></span>
+            <button id="close-notification" class="text-blue-700 hover:text-blue-900">
+                <span class="text-2xl">&times;</span>
+            </button>
+        </div>
         <?php endif; ?>
 
         <div class="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -43,7 +51,7 @@
                                 <td class="px-6 py-4">Rp. <?= number_format($item['nominal'], 0, ',', '.') ?></td>
                                 <td class="px-6 py-4"><?= esc($item['satuan']) ?></td>
                                 <td class="px-6 py-4 space-x-2">
-                                    <a href="#" class="font-medium text-yellow-500 hover:underline">Edit</a>
+                                    <a href="<?= base_url('/admin/komponen-gaji/edit/' . $item['id_komponen_gaji']) ?>" class="font-medium text-yellow-500 hover:underline">Edit</a>
                                     <a href="#" class="font-medium text-red-500 hover:underline">Hapus</a>
                                 </td>
                             </tr>
