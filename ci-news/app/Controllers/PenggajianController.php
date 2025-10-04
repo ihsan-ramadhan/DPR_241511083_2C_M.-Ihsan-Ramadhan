@@ -20,4 +20,11 @@ class PenggajianController extends BaseController
         $data['penggajian'] = $penggajianModel->getPenggajianWithTakeHomePay();
         return view('public/penggajian/index', $data);
     }
+
+    public function detailAdmin($id_anggota)
+    {
+        $penggajianModel = new PenggajianModel();
+        $data['detail'] = $penggajianModel->getDetailPenggajian($id_anggota);
+        return view('admin/penggajian/detail', $data);
+    }
 }

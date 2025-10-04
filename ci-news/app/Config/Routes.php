@@ -20,4 +20,6 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
     $routes->get('/public/penggajian', 'PenggajianController::public');
     $routes->get('/admin/penggajian', 'PenggajianController::admin');
+
+    $routes->get('admin/penggajian/(:num)', 'PenggajianController::detailAdmin/$1');
 });

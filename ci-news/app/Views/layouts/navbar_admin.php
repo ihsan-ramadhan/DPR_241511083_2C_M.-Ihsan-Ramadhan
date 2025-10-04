@@ -21,7 +21,7 @@
         </div>
 
         <div class="flex items-center">
-            <a href="<?= base_url('/logout') ?>" class="logout-link px-4 py-2 text-sm font-medium text-blue-500 bg-white rounded-md hover:bg-slate-100">Logout</a>
+            <a href="<?= base_url('/logout') ?>" class="logout-link px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600">Logout</a>
         </div>
     </div>
 </nav>

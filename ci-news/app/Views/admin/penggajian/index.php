@@ -30,9 +30,9 @@
                         <td class="px-6 py-4 font-medium text-slate-900"><?= esc($item['id_anggota']) ?></td>
                         <td class="px-6 py-4"><?= esc(trim($item['gelar_depan'] . ' ' . $item['nama_depan'] . ' ' . $item['nama_belakang'] . ', ' . $item['gelar_belakang'], ' ,')) ?></td>
                         <td class="px-6 py-4"><?= esc($item['jabatan']) ?></td>
-                        <td class="px-6 py-4">Rp <?= number_format($item['take_home_pay'], 0, ',', '.') ?></td>
+                        <td class="px-6 py-4">Rp. <?= number_format($item['take_home_pay'], 0, ',', '.') ?></td>
                         <td class="px-6 py-4 space-x-2">
-                            <a href="#" class="font-medium text-blue-500 hover:underline">Detail</a>
+                            <a href="<?= base_url('/admin/penggajian/' . $item['id_anggota']) ?>" class="font-medium text-blue-500 hover:underline">Detail</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

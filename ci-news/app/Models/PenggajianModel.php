@@ -18,4 +18,21 @@ class PenggajianModel extends Model
             ->get()
             ->getResultArray();
     }
+
+    public function getDetailPenggajian($id_anggota)
+    {
+        $anggota = $this->db->table('anggota')->where('id_anggota', $id_anggota)->get()->getRowArray();
+
+        $komponen = $this->db->table('penggajian p')
+            ->select('kg.nama_komponen, kg.nominal')
+            ->join('komponen_gaji kg', 'kg.id_komponen_gaji = p.id_komponen_gaji')
+            ->where('p.id_anggota', $id_anggota)
+            ->get()
+            ->getResultArray();
+
+        return [
+            'anggota' => $anggota,
+            'komponen' => $komponen
+        ];
+    }
 }
