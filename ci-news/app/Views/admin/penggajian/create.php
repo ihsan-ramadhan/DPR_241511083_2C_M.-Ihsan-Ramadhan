@@ -1,5 +1,5 @@
 <?= $this->extend('layouts/template') ?>
-<?= $this->section('title') ?>Atur Penggajian Anggota<?= $this->endSection() ?>
+<?= $this->section('title') ?>Tambah Penggajian<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
     <?= $this->include('layouts/navbar_admin') ?>

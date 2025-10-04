@@ -94,4 +94,27 @@ class PenggajianController extends BaseController
             'existing' => $existingIds
         ]);
     }
+
+    public function edit($id_anggota)
+    {
+        $anggotaModel = new AnggotaModel();
+        $komponenGajiModel = new KomponenGajiModel();
+        $penggajianModel = new PenggajianModel();
+
+        $data['anggota'] = $anggotaModel->find($id_anggota);
+        if (empty($data['anggota'])) {
+            return $this->response->setJSON(['error' => 'Anggota tidak ditemukan'])->setStatusCode(404);
+        }
+        $jabatan = $data['anggota']['jabatan'];
+        
+        $data['komponen_gaji'] = $komponenGajiModel
+            ->where('jabatan', $jabatan)
+            ->orWhere('jabatan', 'Semua')
+            ->findAll();
+        
+        $existingKomponen = $penggajianModel->where('id_anggota', $id_anggota)->findAll();
+        $data['existing_ids'] = array_column($existingKomponen, 'id_komponen_gaji');
+
+        return view('admin/penggajian/edit', $data);
+    }
 }

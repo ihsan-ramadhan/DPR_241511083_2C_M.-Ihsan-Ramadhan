@@ -40,6 +40,7 @@
                         <td class="px-6 py-4">Rp. <?= number_format($item['take_home_pay'], 0, ',', '.') ?></td>
                         <td class="px-6 py-4 space-x-2">
                             <a href="<?= base_url('/admin/penggajian/' . $item['id_anggota']) ?>" class="font-medium text-blue-500 hover:underline">Detail</a>
+                            <a href="<?= base_url('/admin/penggajian/edit/' . $item['id_anggota']) ?>" class="font-medium text-yellow-500 hover:underline">Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
