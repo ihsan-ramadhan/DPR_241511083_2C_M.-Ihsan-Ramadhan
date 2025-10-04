@@ -16,6 +16,35 @@ class AnggotaController extends BaseController
         return view('admin/anggota/index', $data);
     }
 
+    public function create()
+    {
+        return view('admin/anggota/create');
+    }
+
+    public function store()
+    {
+        $anggotaModel = new AnggotaModel();
+
+        $gelar_depan = $this->request->getPost('gelar_depan');
+        $gelar_belakang = $this->request->getPost('gelar_belakang');
+
+        $data = [
+            'id_anggota'        => $this->request->getPost('id_anggota'),
+            'nama_depan'        => $this->request->getPost('nama_depan'),
+            'nama_belakang'     => $this->request->getPost('nama_belakang'),
+            'gelar_depan'       => ($gelar_depan === '') ? null : $gelar_depan,
+            'gelar_belakang'    => ($gelar_belakang === '') ? null : $gelar_belakang,
+            'jabatan'           => $this->request->getPost('jabatan'),
+            'status_pernikahan' => $this->request->getPost('status_pernikahan'),
+        ];
+
+        $anggotaModel->insert($data);
+
+        session()->setFlashdata('success', 'Data anggota berhasil ditambahkan.');
+
+        return redirect()->to('/admin/anggota');
+    }
+
     public function public()
     {
         $anggotaModel = new AnggotaModel();

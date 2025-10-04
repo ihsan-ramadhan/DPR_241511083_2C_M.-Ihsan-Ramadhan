@@ -6,7 +6,7 @@
 
 <?= $this->section('content') ?>
     <?php if (session()->getFlashdata('error')) : ?>
-    <div id="auth-notification" class="fixed top-5 right-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg flex items-center" role="alert">
+    <div id="global-notification" class="fixed top-5 right-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg flex items-center z-50" role="alert">
         <span class="block sm:inline mr-4"><?= session()->getFlashdata('error') ?></span>
         <button id="close-notification" class="text-red-700 hover:text-red-900">
             <span class="text-2xl">&times;</span>
@@ -44,28 +44,6 @@
             </form>
         </div>
     </div>
-
-    <?php if (session()->getFlashdata('error')) : ?>
-    <script>
-        const notification = document.getElementById('auth-notification');
-        const closeButton = document.getElementById('close-notification');
-
-        function hideNotification() {
-            if (notification) {
-                notification.style.display = 'none';
-            }
-        }
-
-        const autoCloseTimer = setTimeout(hideNotification, 5000);
-
-        if (closeButton) {
-            closeButton.addEventListener('click', function() {
-                clearTimeout(autoCloseTimer);
-                hideNotification();
-            });
-        }
-    </script>
-    <?php endif; ?>
     <script>
         const loginForm = document.getElementById('login-form');
         const usernameInput = document.getElementById('username');

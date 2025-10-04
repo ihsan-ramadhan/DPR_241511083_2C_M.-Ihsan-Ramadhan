@@ -52,7 +52,27 @@
             }
         });
     </script>
+    <script>
+        const globalNotification = document.getElementById('global-notification');
+        if (globalNotification) {
+            const closeButton = globalNotification.querySelector('#close-notification');
 
+            function hideGlobalNotification() {
+                if (globalNotification) {
+                    globalNotification.style.display = 'none';
+                }
+            }
+
+            const autoCloseTimer = setTimeout(hideGlobalNotification, 5000);
+
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    clearTimeout(autoCloseTimer);
+                    hideGlobalNotification();
+                });
+            }
+        }
+    </script>
     <?= $this->renderSection('scripts') ?>
 
 </body>

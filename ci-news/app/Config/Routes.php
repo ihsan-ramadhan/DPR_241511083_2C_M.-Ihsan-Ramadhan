@@ -18,6 +18,9 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('/public/anggota', 'AnggotaController::public');
     $routes->get('/admin/anggota', 'AnggotaController::admin');
 
+    $routes->get('/admin/anggota/create', 'AnggotaController::create');
+    $routes->post('/admin/anggota/store', 'AnggotaController::store');
+
     $routes->get('/public/penggajian', 'PenggajianController::public');
     $routes->get('/admin/penggajian', 'PenggajianController::admin');
 
