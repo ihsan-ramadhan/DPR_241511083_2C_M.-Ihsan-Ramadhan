@@ -16,10 +16,10 @@
             <table class="w-full text-sm text-left text-slate-500">
                 <thead class="text-xs text-slate-700 uppercase bg-slate-50">
                     <tr>
-                        <th scope="col" class="px-6 py-3">ID</th>
-                        <th scope="col" class="px-6 py-3">Nama Lengkap</th>
-                        <th scope="col" class="px-6 py-3">Jabatan</th>
-                        <th scope="col" class="px-6 py-3">Status Pernikahan</th>
+                        <th scope="col" class="px-6 py-4">ID</th>
+                        <th scope="col" class="px-6 py-4">Nama Lengkap</th>
+                        <th scope="col" class="px-6 py-4">Jabatan</th>
+                        <th scope="col" class="px-6 py-4">Status Pernikahan</th>
                     </tr>
                 </thead>
                 <tbody>

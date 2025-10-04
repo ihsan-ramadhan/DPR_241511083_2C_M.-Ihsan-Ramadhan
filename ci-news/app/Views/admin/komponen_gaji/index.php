@@ -14,13 +14,13 @@
                 <table class="w-full text-sm text-left text-slate-500">
                     <thead class="text-xs text-slate-700 uppercase bg-slate-50">
                         <tr>
-                            <th scope="col" class="px-6 py-3">ID</th>
-                            <th scope="col" class="px-6 py-3">Nama Komponen</th>
-                            <th scope="col" class="px-6 py-3">Kategori</th>
-                            <th scope="col" class="px-6 py-3">Untuk Jabatan</th>
-                            <th scope="col" class="px-6 py-3">Nominal</th>
-                            <th scope="col" class="px-6 py-3">Satuan</th>
-                            <th scope="col" class="px-6 py-3">Aksi</th>
+                            <th scope="col" class="px-6 py-4">ID</th>
+                            <th scope="col" class="px-6 py-4">Nama Komponen</th>
+                            <th scope="col" class="px-6 py-4">Kategori</th>
+                            <th scope="col" class="px-6 py-4">Untuk Jabatan</th>
+                            <th scope="col" class="px-6 py-4">Nominal</th>
+                            <th scope="col" class="px-6 py-4">Satuan</th>
+                            <th scope="col" class="px-6 py-4">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +31,7 @@
                                 <td class="px-6 py-4"><?= esc($item['nama_komponen']) ?></td>
                                 <td class="px-6 py-4"><?= esc($item['kategori']) ?></td>
                                 <td class="px-6 py-4"><?= esc($item['jabatan']) ?></td>
-                                <td class="px-6 py-4">Rp <?= number_format($item['nominal']) ?></td>
+                                <td class="px-6 py-4">Rp. <?= number_format($item['nominal'], 0, ',', '.') ?></td>
                                 <td class="px-6 py-4"><?= esc($item['satuan']) ?></td>
                                 <td class="px-6 py-4 space-x-2">
                                     <a href="#" class="font-medium text-yellow-500 hover:underline">Edit</a>

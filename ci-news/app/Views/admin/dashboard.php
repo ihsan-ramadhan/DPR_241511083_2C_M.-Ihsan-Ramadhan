@@ -66,5 +66,39 @@
             </div>
         </div>
     </div>
+
+    <div class="mt-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+            <div class="p-6 flex justify-between items-center border-b">
+                <h3 class="text-lg font-semibold">Data Komponen Gaji</h3>
+                <a href="<?= base_url('/admin/komponen-gaji') ?>" class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Edit Data</a>
+            </div>
+            <div class="overflow-y-auto h-72">
+                <table class="w-full text-sm">
+                    <thead class="text-xs text-slate-700 uppercase bg-slate-50 sticky top-0">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left">ID</th>
+                            <th scope="col" class="px-6 py-4 text-left">Nama Komponen</th>
+                            <th scope="col" class="px-6 py-4 text-left">Kategori</th>
+                            <th scope="col" class="px-6 py-4 text-left">Untuk Jabatan</th>
+                            <th scope="col" class="px-6 py-4 text-left">Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-600">
+                        <?php foreach($komponen_gaji as $item): ?>
+                        <tr class="border-t">
+                            <td class="px-6 py-4 font-mono"><?= esc($item['id_komponen_gaji']) ?></td>
+                            <td class="px-6 py-4 font-medium"><?= esc($item['nama_komponen']) ?></td>
+                            <td class="px-6 py-4"><?= esc($item['kategori']) ?></td>
+                            <td class="px-6 py-4"><?= esc($item['jabatan']) ?></td>
+                            <td class="px-6 py-4">Rp. <?= number_format($item['nominal'], 0, ',', '.') ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </div>
 <?= $this->endSection() ?>

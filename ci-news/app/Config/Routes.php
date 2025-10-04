@@ -24,6 +24,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('/admin/anggota/edit/(:num)', 'AnggotaController::edit/$1');
     $routes->post('/admin/anggota/update/(:num)', 'AnggotaController::update/$1');
 
+    $routes->get('/admin/anggota/delete/(:num)', 'AnggotaController::delete/$1');
+
     $routes->get('/public/penggajian', 'PenggajianController::public');
     $routes->get('/admin/penggajian', 'PenggajianController::admin');
 

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AnggotaModel;
+use App\Models\PenggajianModel;
 
 class AnggotaController extends BaseController
 {
@@ -89,6 +90,20 @@ class AnggotaController extends BaseController
         } else {
             session()->setFlashdata('info', 'Tidak ada perubahan data yang dilakukan.');
         }
+
+        return redirect()->to('/admin/anggota');
+    }
+
+    public function delete($id)
+    {
+        $anggotaModel = new AnggotaModel();
+        $penggajianModel = new PenggajianModel();
+
+        $penggajianModel->where('id_anggota', $id)->delete();
+
+        $anggotaModel->delete($id);
+
+        session()->setFlashdata('success', 'Data anggota berhasil dihapus.');
 
         return redirect()->to('/admin/anggota');
     }

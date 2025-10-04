@@ -34,11 +34,11 @@
             <table class="w-full text-sm text-left text-slate-500">
                 <thead class="text-xs text-slate-700 uppercase bg-slate-50">
                     <tr>
-                        <th scope="col" class="px-6 py-3">ID</th>
-                        <th scope="col" class="px-6 py-3">Nama Lengkap</th>
-                        <th scope="col" class="px-6 py-3">Jabatan</th>
-                        <th scope="col" class="px-6 py-3">Status Pernikahan</th>
-                        <th scope="col" class="px-6 py-3">Aksi</th>
+                        <th scope="col" class="px-6 py-4">ID</th>
+                        <th scope="col" class="px-6 py-4">Nama Lengkap</th>
+                        <th scope="col" class="px-6 py-4">Jabatan</th>
+                        <th scope="col" class="px-6 py-4">Status Pernikahan</th>
+                        <th scope="col" class="px-6 py-4">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,11 @@
                             <td class="px-6 py-4"><?= esc($item['status_pernikahan']) ?></td>
                             <td class="px-6 py-4 space-x-2">
                                 <a href="<?= base_url('/admin/anggota/edit/' . $item['id_anggota']) ?>" class="font-medium text-yellow-500 hover:underline">Edit</a>
-                                <a href="#" class="font-medium text-red-500 hover:underline">Hapus</a>
+                                <a href="<?= base_url('/admin/anggota/delete/' . $item['id_anggota']) ?>" 
+                                    class="font-medium text-red-500 hover:underline delete-link"
+                                    data-name="<?= esc(trim($item['gelar_depan'] . ' ' . $item['nama_depan'] . ' ' . $item['nama_belakang'] . ', ' . $item['gelar_belakang'], ' ,')) ?>">
+                                    Hapus
+                                </a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
