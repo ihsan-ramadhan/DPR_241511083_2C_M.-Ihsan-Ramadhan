@@ -52,7 +52,12 @@
                                 <td class="px-6 py-4"><?= esc($item['satuan']) ?></td>
                                 <td class="px-6 py-4 space-x-2">
                                     <a href="<?= base_url('/admin/komponen-gaji/edit/' . $item['id_komponen_gaji']) ?>" class="font-medium text-yellow-500 hover:underline">Edit</a>
-                                    <a href="#" class="font-medium text-red-500 hover:underline">Hapus</a>
+                                    <a href="<?= base_url('/admin/komponen-gaji/delete/' . $item['id_komponen_gaji']) ?>" 
+                                        class="font-medium text-red-500 hover:underline delete-link"
+                                        data-type="komponen gaji"
+                                        data-name="<?= esc($item['nama_komponen']) ?>">
+                                        Hapus
+                                    </a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

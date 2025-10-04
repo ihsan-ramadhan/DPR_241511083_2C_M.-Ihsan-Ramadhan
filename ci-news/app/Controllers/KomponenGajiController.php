@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\KomponenGajiModel;
+use App\Models\PenggajianModel;
 
 class KomponenGajiController extends BaseController
 {
@@ -84,6 +85,20 @@ class KomponenGajiController extends BaseController
         } else {
             session()->setFlashdata('info', 'Tidak ada perubahan data yang dilakukan.');
         }
+
+        return redirect()->to('/admin/komponen-gaji');
+    }
+
+    public function delete($id)
+    {
+        $komponenGajiModel = new KomponenGajiModel();
+        $penggajianModel = new PenggajianModel();
+
+        $penggajianModel->where('id_komponen_gaji', $id)->delete();
+
+        $komponenGajiModel->delete($id);
+
+        session()->setFlashdata('success', 'Komponen gaji berhasil dihapus.');
 
         return redirect()->to('/admin/komponen-gaji');
     }

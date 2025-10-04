@@ -53,6 +53,7 @@
                                 <a href="<?= base_url('/admin/anggota/edit/' . $item['id_anggota']) ?>" class="font-medium text-yellow-500 hover:underline">Edit</a>
                                 <a href="<?= base_url('/admin/anggota/delete/' . $item['id_anggota']) ?>" 
                                     class="font-medium text-red-500 hover:underline delete-link"
+                                    data-type="data anggota"
                                     data-name="<?= esc(trim($item['gelar_depan'] . ' ' . $item['nama_depan'] . ' ' . $item['nama_belakang'] . ', ' . $item['gelar_belakang'], ' ,')) ?>">
                                     Hapus
                                 </a>
